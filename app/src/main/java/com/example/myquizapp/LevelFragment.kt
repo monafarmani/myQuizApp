@@ -23,6 +23,7 @@ class LevelFragment : Fragment() {
         easy_level.setOnClickListener {
             findNavController().navigate(R.id.action_levelFragment_to_quizFragment)
 
+
         }
     }
 }
