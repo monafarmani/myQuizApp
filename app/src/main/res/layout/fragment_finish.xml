@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/dark"
+    tools:context=".ResultFragment">
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="430dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginEnd="10dp"
+        app:cardBackgroundColor="@color/dark_gray"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" >
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/textView7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Congratulations!"
+                android:textColor="@color/white"
+                android:textSize="28dp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/star_two"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_marginTop="20dp"
+                android:src="@drawable/ic_star_24"
+                app:layout_constraintEnd_toEndOf="@+id/textView7"
+                app:layout_constraintStart_toStartOf="@+id/textView7"
+                app:layout_constraintTop_toBottomOf="@+id/textView7" />
+
+            <ImageView
+                android:id="@+id/star_one"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_marginEnd="20dp"
+                android:src="@drawable/ic_star_24"
+                app:layout_constraintBottom_toBottomOf="@+id/star_two"
+                app:layout_constraintEnd_toStartOf="@+id/star_two"
+                app:layout_constraintTop_toTopOf="@+id/star_two" />
+
+            <ImageView
+                android:id="@+id/star_three"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_marginStart="20dp"
+                android:src="@drawable/ic_star_24"
+                app:layout_constraintBottom_toBottomOf="@+id/star_two"
+                app:layout_constraintStart_toEndOf="@+id/star_two"
+                app:layout_constraintTop_toTopOf="@+id/star_two" />
+
+            <TextView
+                android:id="@+id/textView8"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="60dp"
+                android:layout_marginEnd="40dp"
+                android:text="You have completed the quiz. Would you like to continue with a new one ?"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/star_two" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_marginTop="30dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView8">
+
+                <TextView
+                    android:id="@+id/menu"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:background="@drawable/red_circle"
+                    android:gravity="center"
+                    app:layout_constraintEnd_toStartOf="@+id/replay"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/replay"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:background="@drawable/green_circle"
+                    android:gravity="center"
+                    app:layout_constraintEnd_toStartOf="@+id/next"
+                    app:layout_constraintStart_toEndOf="@+id/menu"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/next"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:background="@drawable/sky_blue_circle"
+                    android:gravity="center"
+                    app:layout_constraintEnd_toStartOf="@+id/share"
+                    app:layout_constraintStart_toEndOf="@+id/replay"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/share"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:background="@drawable/blue_circle"
+                    android:gravity="center"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/next"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/menu_imageView"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/ic_menu_24"
+                    app:layout_constraintBottom_toBottomOf="@+id/menu"
+                    app:layout_constraintEnd_toEndOf="@+id/menu"
+                    app:layout_constraintStart_toStartOf="@+id/menu"
+                    app:layout_constraintTop_toTopOf="@+id/menu" />
+
+                <ImageView
+                    android:id="@+id/replay_imageView"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/ic_refresh_24"
+                    app:layout_constraintBottom_toBottomOf="@+id/replay"
+                    app:layout_constraintEnd_toEndOf="@+id/replay"
+                    app:layout_constraintStart_toStartOf="@+id/replay"
+                    app:layout_constraintTop_toTopOf="@+id/replay" />
+
+                <ImageView
+                    android:id="@+id/next_imageView"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/ic_next_24"
+                    app:layout_constraintBottom_toBottomOf="@+id/next"
+                    app:layout_constraintEnd_toEndOf="@+id/next"
+                    app:layout_constraintStart_toStartOf="@+id/next"
+                    app:layout_constraintTop_toTopOf="@+id/next" />
+
+                <ImageView
+                    android:id="@+id/share_imageView"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/ic_share_24"
+                    app:layout_constraintBottom_toBottomOf="@+id/share"
+                    app:layout_constraintEnd_toEndOf="@+id/share"
+                    app:layout_constraintStart_toStartOf="@+id/share"
+                    app:layout_constraintTop_toTopOf="@+id/share" />
+
+                <TextView
+                    android:id="@+id/textView13"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Menu"
+                    android:textColor="@color/light_gray"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="@+id/menu"
+                    app:layout_constraintStart_toStartOf="@+id/menu"
+                    app:layout_constraintTop_toBottomOf="@+id/menu" />
+
+                <TextView
+                    android:id="@+id/textView14"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Replay"
+                    android:textColor="@color/light_gray"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="@+id/replay"
+                    app:layout_constraintStart_toStartOf="@+id/replay"
+                    app:layout_constraintTop_toBottomOf="@+id/replay" />
+
+                <TextView
+                    android:id="@+id/textView15"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Next"
+                    android:textColor="@color/light_gray"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="@+id/next"
+                    app:layout_constraintStart_toStartOf="@+id/next"
+                    app:layout_constraintTop_toBottomOf="@+id/next" />
+
+                <TextView
+                    android:id="@+id/textView16"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Share"
+                    android:textColor="@color/light_gray"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="@+id/share"
+                    app:layout_constraintStart_toStartOf="@+id/share"
+                    app:layout_constraintTop_toBottomOf="@+id/share" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

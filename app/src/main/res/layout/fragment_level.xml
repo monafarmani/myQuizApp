@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background"
+    tools:context=".LevelFragment">
+
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:text="Select Level"
+        android:fontFamily="@font/acme"
+        android:textColor="@color/black"
+        android:textSize="40sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/mrdium_level"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="60dp"
+        android:background="@drawable/green_circle"
+        app:layout_constraintEnd_toEndOf="@+id/textView9"
+        app:layout_constraintStart_toStartOf="@+id/textView9"
+        app:layout_constraintTop_toBottomOf="@+id/textView9" />
+
+    <TextView
+        android:id="@+id/easy_level"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/green_circle"
+        app:layout_constraintBottom_toBottomOf="@+id/mrdium_level"
+        app:layout_constraintEnd_toStartOf="@+id/mrdium_level"
+        app:layout_constraintTop_toTopOf="@+id/mrdium_level" />
+
+    <TextView
+        android:id="@+id/hard_level"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="20dp"
+        android:background="@drawable/green_circle"
+        app:layout_constraintBottom_toBottomOf="@+id/mrdium_level"
+        app:layout_constraintStart_toEndOf="@+id/mrdium_level"
+        app:layout_constraintTop_toTopOf="@+id/mrdium_level"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <ImageView
+        android:id="@+id/walk_imageView"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:src="@drawable/ic_walk_24"
+        app:layout_constraintBottom_toBottomOf="@+id/easy_level"
+        app:layout_constraintEnd_toEndOf="@+id/easy_level"
+        app:layout_constraintStart_toStartOf="@+id/easy_level"
+        app:layout_constraintTop_toTopOf="@+id/easy_level" />
+
+    <ImageView
+        android:id="@+id/run_imageView"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:src="@drawable/ic_baseline_directions_run_24"
+        app:layout_constraintBottom_toBottomOf="@+id/mrdium_level"
+        app:layout_constraintEnd_toEndOf="@+id/mrdium_level"
+        app:layout_constraintStart_toStartOf="@+id/mrdium_level"
+        app:layout_constraintTop_toTopOf="@+id/mrdium_level" />
+
+    <ImageView
+        android:id="@+id/bike_imageView"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:src="@drawable/ic_bike_24"
+        app:layout_constraintBottom_toBottomOf="@+id/hard_level"
+        app:layout_constraintEnd_toEndOf="@+id/hard_level"
+        app:layout_constraintStart_toStartOf="@+id/hard_level"
+        app:layout_constraintTop_toTopOf="@+id/hard_level" />
+</androidx.constraintlayout.widget.ConstraintLayout>
