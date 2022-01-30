@@ -20,25 +20,46 @@
         android:label="Quiz Questions"
         tools:layout="@layout/fragment_quiz" >
         <action
-            android:id="@+id/action_quizFragment_to_resultFragment"
-            app:destination="@id/resultFragment" />
+            android:id="@+id/action_quizFragment_to_FinishFragment"
+            app:destination="@id/finishFragment" />
+        <argument
+            android:name="levelQuiz"
+            app:argType="com.example.myquizapp.LevelQuiz"
+            android:defaultValue="EASY" />
+        <action
+            android:id="@+id/action_quizFragment_to_levelFragment"
+            app:destination="@id/levelFragment" />
     </fragment>
     <fragment
-        android:id="@+id/resultFragment"
-        android:name="com.example.myquizapp.ResultFragment"
-        android:label="fragment_finish"
+        android:id="@+id/finishFragment"
+        android:name="com.example.myquizapp.FinishFragment"
+        android:label="Finish"
         tools:layout="@layout/fragment_finish" >
         <action
-            android:id="@+id/action_resultFragment_to_quizFragment"
+            android:id="@+id/action_FinishFragment_to_quizFragment"
             app:destination="@id/quizFragment" />
+        <action
+            android:id="@+id/action_finishFragment_to_finalFragment"
+            app:destination="@id/finalFragment" />
+        <argument
+            android:name="false_number"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_finishFragment_to_levelFragment"
+            app:destination="@id/levelFragment" />
     </fragment>
     <fragment
         android:id="@+id/levelFragment"
         android:name="com.example.myquizapp.LevelFragment"
-        android:label="fragment_level"
-        tools:layout="@layout/fragment_level" >
+        android:label="LevelFragment"
+        tools:layout="@layout/fragment_level">
         <action
             android:id="@+id/action_levelFragment_to_quizFragment"
             app:destination="@id/quizFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/finalFragment"
+        android:name="com.example.myquizapp.FinalFragment"
+        android:label="fragment_final"
+        tools:layout="@layout/fragment_final" />
 </navigation>

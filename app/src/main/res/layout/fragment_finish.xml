@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/dark"
-    tools:context=".ResultFragment">
+    tools:context=".FinishFragment">
 
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
@@ -35,49 +35,44 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <ImageView
-                android:id="@+id/star_two"
-                android:layout_width="70dp"
-                android:layout_height="70dp"
-                android:layout_marginTop="20dp"
-                android:src="@drawable/ic_star_24"
+            <TextView
+                android:id="@+id/username"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="dear Mona"
+                android:textSize="22sp"
+                android:textColor="@color/white"
                 app:layout_constraintEnd_toEndOf="@+id/textView7"
                 app:layout_constraintStart_toStartOf="@+id/textView7"
                 app:layout_constraintTop_toBottomOf="@+id/textView7" />
 
-            <ImageView
-                android:id="@+id/star_one"
-                android:layout_width="70dp"
-                android:layout_height="70dp"
-                android:layout_marginEnd="20dp"
-                android:src="@drawable/ic_star_24"
-                app:layout_constraintBottom_toBottomOf="@+id/star_two"
-                app:layout_constraintEnd_toStartOf="@+id/star_two"
-                app:layout_constraintTop_toTopOf="@+id/star_two" />
-
-            <ImageView
-                android:id="@+id/star_three"
-                android:layout_width="70dp"
-                android:layout_height="70dp"
-                android:layout_marginStart="20dp"
-                android:src="@drawable/ic_star_24"
-                app:layout_constraintBottom_toBottomOf="@+id/star_two"
-                app:layout_constraintStart_toEndOf="@+id/star_two"
-                app:layout_constraintTop_toTopOf="@+id/star_two" />
+            <RatingBar
+                android:id="@+id/rating_bar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:background="@color/dark_gray"
+                android:numStars="3"
+                android:stepSize="0.1"
+                android:rating="2.3"
+                android:theme="@style/RatingBar"
+                app:layout_constraintEnd_toEndOf="@+id/username"
+                app:layout_constraintStart_toStartOf="@+id/username"
+                app:layout_constraintTop_toBottomOf="@+id/username" />
 
             <TextView
                 android:id="@+id/textView8"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="40dp"
-                android:layout_marginTop="60dp"
-                android:layout_marginEnd="40dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="40dp"
+                android:layout_marginEnd="30dp"
                 android:text="You have completed the quiz. Would you like to continue with a new one ?"
                 android:textColor="@color/white"
                 android:textSize="20sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/star_two" />
+                app:layout_constraintTop_toBottomOf="@+id/rating_bar" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -212,6 +207,8 @@
                     app:layout_constraintStart_toStartOf="@+id/share"
                     app:layout_constraintTop_toBottomOf="@+id/share" />
             </androidx.constraintlayout.widget.ConstraintLayout>
+
+
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.card.MaterialCardView>
 

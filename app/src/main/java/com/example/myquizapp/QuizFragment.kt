@@ -1,25 +1,25 @@
 package com.example.myquizapp
 
-import android.annotation.SuppressLint
 import android.app.Dialog
-import android.media.MediaParser
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.media.MediaPlayer
 import android.media.MediaPlayer.*
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.os.Handler
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AnimationUtils
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.core.content.ContextCompat
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import kotlinx.android.synthetic.main.custom_dialog.*
 import kotlinx.android.synthetic.main.fragment_quiz.*
-import java.lang.Exception
 
 
 class QuizFragment : Fragment() {
@@ -36,6 +36,7 @@ class QuizFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
         val view = inflater.inflate(R.layout.fragment_quiz, container, false)
 
         return view
@@ -43,7 +44,22 @@ class QuizFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        list = Constants().createList()
+
+        var levelQuiz = LevelQuiz.EASY
+        arguments?.let {
+            levelQuiz = it.get("levelQuiz") as LevelQuiz
+
+        }
+
+        if(levelQuiz == LevelQuiz.EASY){
+            list = Constants().easyList()
+        }else if(levelQuiz == LevelQuiz.NORMAL){
+            list = Constants().normalList()
+        }else{
+            list = Constants().hardList()
+            
+        }
+
 
         setQuestion()
 
@@ -67,8 +83,8 @@ class QuizFragment : Fragment() {
         val question = list!![currentPosition]
         val i = currentPosition + 1
         progressBar.progress = i
-      //  timer_textView.text = "${(timerDuration / 1000).toString() + "Seconds"}"
-      //  startTimer(0)
+//        timer_textView.text = "${(timerDuration / 1000).toString() + "Seconds"}"
+    //    startTimer(timerDuration)
 
         progress_textView.setText(i.toString() + "/" + progressBar.max)
 
@@ -123,7 +139,10 @@ class QuizFragment : Fragment() {
 
                 } else {
                     Handler().postDelayed({
-                        findNavController().navigate(R.id.action_quizFragment_to_resultFragment)
+
+                        val action = QuizFragmentDirections.actionQuizFragmentToFinishFragment(falseNumber)
+                        findNavController().navigate(action)
+//                        findNavController().navigate(R.id.action_quizFragment_to_FinishFragment)
                     }, 1000)
                 }
 
@@ -136,12 +155,25 @@ class QuizFragment : Fragment() {
 
             false_textView.visibility = View.VISIBLE
 
+                animateRocket()
+
+                try {
+                    player = MediaPlayer.create(requireContext(), R.raw.falsesound)
+                    player!!.isLooping = false
+                    player!!.start()
+                } catch (e: Exception) {
+                    e.printStackTrace()
+                }
+
             Handler().postDelayed({
                 false_textView.visibility = View.INVISIBLE
             }, 1000)
 
             if (falseNumber == 3) {
                 customDialog()
+                countDownTimer?.let {
+                    it.cancel()
+                }
             }
 
         }
@@ -171,15 +203,27 @@ class QuizFragment : Fragment() {
     private fun customDialog() {
         val customDialog = Dialog(requireContext())
         customDialog.setContentView(R.layout.custom_dialog)
-
+        customDialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         customDialog.redo_textView.setOnClickListener({
 
             currentPosition = 0
             falseNumber = 0
-       //     countDownTimer!!.cancel()
+            countDownTimer?.let {
+                it.cancel()
+            }
+
+//            timer_textView.text = "${(timerDuration / 1000).toString() + "Seconds"}"
+
             defaultQuestion()
             customDialog.dismiss()
         })
+
+        customDialog.menu_textView.setOnClickListener({
+
+            customDialog.dismiss()
+            findNavController().navigate(R.id.action_quizFragment_to_levelFragment)
+        })
+
         customDialog.show()
     }
 
@@ -201,8 +245,8 @@ class QuizFragment : Fragment() {
         val question = list!![currentPosition]
         val i = currentPosition + 1
         progressBar.progress = i
-    //    timer_textView.text = "${(timerDuration / 1000).toString() + "Seconds"}"
-    //    startTimer(0)
+
+       // startTimer(timerDuration)
 
         progress_textView.setText(i.toString() + "/" + progressBar.max)
 
@@ -229,7 +273,7 @@ class QuizFragment : Fragment() {
 
     private fun startTimer(second: Long) {
 
-        countDownTimer = object : CountDownTimer(timerDuration - second, 1000) {
+        countDownTimer = object : CountDownTimer(second, 1000) {
             override fun onTick(millisUntilFinished: Long) {
                 timer_textView.text = (millisUntilFinished / 1000).toString() + " seconds"
             }
@@ -237,12 +281,19 @@ class QuizFragment : Fragment() {
             override fun onFinish() {
                 Toast.makeText(context, "Time is over!", Toast.LENGTH_SHORT).show()
 
-                Handler().postDelayed({
-                    customDialog()
-                }, 1000)
+//                Handler().postDelayed({
+//                    customDialog()
+//                }, 1000)
+                customDialog()
                 countDownTimer!!.cancel()
+
             }
         }.start()
+    }
+
+    private fun animateRocket(){
+        val shake = AnimationUtils.loadAnimation(requireContext() , R.anim.shake_animation)
+        flag_imageView.animation = shake
     }
 
     override fun onDestroy() {
